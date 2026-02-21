@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}">Ringkasan Kategori</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div th:replace="~{fragments/layout :: navbar}"></div>
+
+<div class="container main-content mt-4">
+    <h1 th:text="${title}">Ringkasan Kategori</h1>
+    <p class="text-muted">Daftar kategori beserta jumlah produk yang tersedia.</p>
+
+    <div class="card mt-3" style="max-width: 600px;">
+        <div class="card-header bg-dark text-white">
+            Kategori Produk
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item d-flex justify-content-between align-items-center"
+                th:each="entry : ${categoryStats}">
+
+                <a th:href="@{/products/category/{nama}(nama=${entry.key})}"
+                   th:text="${entry.key}"
+                   class="text-decoration-none fw-bold text-primary">Nama Kategori</a>
+
+                <span class="badge bg-primary rounded-pill"
+                      th:text="${entry.value} + ' Produk'">0 Produk</span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="mt-4">
+        <a th:href="@{/products}" class="btn btn-secondary">Kembali ke Daftar Produk</a>
+    </div>
+</div>
+
+<div th:replace="~{fragments/layout :: footer}"></div>
+
+</body>
+</html>
