@@ -13,7 +13,7 @@ public class AboutController {
         model.addAttribute("appName", "Spring MVC Lab");
         model.addAttribute("version", "1.0");
         model.addAttribute("author", "Ronald Saut Manurung"); // Ganti nama kamu
-        model.addAttribute("technologies", List.of("Spring Boot", "Thymeleaf", "Bootstrap", "Java 25"));
+        model.addAttribute("technologies", List.of("Spring Boot", "Thymeleaf", "Tailwind CSS", "Java 25"));
         return "about";
     }
 }
